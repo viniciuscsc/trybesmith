@@ -8,6 +8,15 @@ const registerProduct = async (productData: Product): Promise<ServiceResponse<Pr
   return { statusCode: 201, data: newProduct.dataValues };
 };
 
+const getProducts = async (): Promise<ServiceResponse<Product[]>> => {
+  const productsDB = await ProductModel.findAll();
+
+  const products = productsDB.map((productDB) => productDB.dataValues);
+
+  return { statusCode: 200, data: products };
+};
+
 export default {
   registerProduct,
+  getProducts,
 };

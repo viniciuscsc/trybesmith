@@ -1,4 +1,4 @@
 export type ServiceResponse<T> = {
-  statusCode: 201,
+  statusCode: 200 | 201,
   data: T,
 };
