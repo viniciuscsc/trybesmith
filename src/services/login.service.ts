@@ -12,10 +12,10 @@ const login = async (loginData: Login)
   const { username } = loginData;
 
   const requiredFieldsError = validateRequiredFields(loginData);
-  if (requiredFieldsError.statusCode) return requiredFieldsError;
+  if (requiredFieldsError.statusCode !== 200) return requiredFieldsError;
 
   const usernameAndPasswordError = await validateUsernameAndPassword(loginData);
-  if (usernameAndPasswordError.statusCode) return usernameAndPasswordError;
+  if (usernameAndPasswordError.statusCode !== 200) return usernameAndPasswordError;
 
   const userId = +usernameAndPasswordError.data.message;
 

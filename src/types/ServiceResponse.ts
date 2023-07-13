@@ -1,5 +1,5 @@
 export type ServiceResponseFail = {
-  statusCode?: 400 | 401,
+  statusCode: 200 | 400 | 401,
   data: { message: string },
 };
 

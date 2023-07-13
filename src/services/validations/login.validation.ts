@@ -13,7 +13,7 @@ export const validateRequiredFields = (loginData: Login): ServiceResponseFail =>
     };
   }
 
-  return { data: { message: '' } };
+  return { statusCode: 200, data: { message: '' } };
 };
 
 export const validateUsernameAndPassword = async (loginData: Login)
@@ -28,5 +28,5 @@ export const validateUsernameAndPassword = async (loginData: Login)
 
   const { id } = user.dataValues;
 
-  return { data: { message: `${id}` } };
+  return { statusCode: 200, data: { message: `${id}` } };
 };
