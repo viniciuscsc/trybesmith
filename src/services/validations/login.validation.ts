@@ -3,7 +3,7 @@ import UserModel from '../../database/models/user.model';
 import { Login } from '../../types/Login';
 import { ServiceResponseFail } from '../../types/ServiceResponse';
 
-export const validateLoginRequiredFields = (loginData: Login): ServiceResponseFail => {
+const validateLoginRequiredFields = (loginData: Login): ServiceResponseFail => {
   const { username, password } = loginData;
 
   if (!username || !password) {
@@ -16,7 +16,7 @@ export const validateLoginRequiredFields = (loginData: Login): ServiceResponseFa
   return { statusCode: 200, data: { message: '' } };
 };
 
-export const validateUsernameAndPassword = async (loginData: Login)
+const validateUsernameAndPassword = async (loginData: Login)
 : Promise<ServiceResponseFail> => {
   const { username, password } = loginData;
 
@@ -29,4 +29,9 @@ export const validateUsernameAndPassword = async (loginData: Login)
   const { id } = user.dataValues;
 
   return { statusCode: 200, data: { message: `${id}` } };
+};
+
+export default {
+  validateLoginRequiredFields,
+  validateUsernameAndPassword,
 };

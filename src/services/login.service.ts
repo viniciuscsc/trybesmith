@@ -2,19 +2,16 @@ import { Login } from '../types/Login';
 import { ServiceResponseFail, ServiceResponseSuccess } from '../types/ServiceResponse';
 import { Token } from '../types/Token';
 import jwtUtil from '../utils/jwt.util';
-import {
-  validateLoginRequiredFields,
-  validateUsernameAndPassword,
-} from './validations/login.validation';
+import loginValidation from './validations/login.validation';
 
 const login = async (loginData: Login)
 : Promise<ServiceResponseSuccess<Token> | ServiceResponseFail> => {
   const { username } = loginData;
 
-  const requiredFieldsError = validateLoginRequiredFields(loginData);
+  const requiredFieldsError = loginValidation.validateLoginRequiredFields(loginData);
   if (requiredFieldsError.statusCode !== 200) return requiredFieldsError;
 
-  const usernameAndPasswordError = await validateUsernameAndPassword(loginData);
+  const usernameAndPasswordError = await loginValidation.validateUsernameAndPassword(loginData);
   if (usernameAndPasswordError.statusCode !== 200) return usernameAndPasswordError;
 
   const userId = +usernameAndPasswordError.data.message;

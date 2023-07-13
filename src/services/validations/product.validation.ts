@@ -12,7 +12,7 @@ export const validateProductRequiredFields = (productData: Product)
   return { statusCode: 200, data: { message: '' } };
 };
 
-export const validateInputType = (productData: Product)
+export const validateProductInputType = (productData: Product)
 : ServiceResponseFail => {
   const { name, price } = productData;
 

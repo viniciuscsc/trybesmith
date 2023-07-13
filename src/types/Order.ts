@@ -11,3 +11,9 @@ export type Orders = {
   userId: number;
   productIds?: number[];
 };
+
+export type NewOrder = {
+  id?: number;
+  userId: number;
+  productIds?: ProductId[];
+};

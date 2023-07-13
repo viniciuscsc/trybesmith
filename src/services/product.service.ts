@@ -3,7 +3,7 @@ import { Product } from '../types/Product';
 import { ServiceResponseFail, ServiceResponseSuccess } from '../types/ServiceResponse';
 import {
   validateProductRequiredFields,
-  validateInputType,
+  validateProductInputType,
   validateMinAmountChars,
 } from './validations/product.validation';
 
@@ -12,8 +12,8 @@ const registerProduct = async (productData: Product)
   const productRequiredFieldsError = validateProductRequiredFields(productData);
   if (productRequiredFieldsError.statusCode !== 200) return productRequiredFieldsError;
 
-  const inputTypeError = validateInputType(productData);
-  if (inputTypeError.statusCode !== 200) return inputTypeError;
+  const inputProductTypeError = validateProductInputType(productData);
+  if (inputProductTypeError.statusCode !== 200) return inputProductTypeError;
 
   const minAmountCharsError = validateMinAmountChars(productData);
   if (minAmountCharsError.statusCode !== 200) return minAmountCharsError;
