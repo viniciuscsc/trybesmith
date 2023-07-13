@@ -1,8 +1,23 @@
 import ProductModel from '../database/models/product.model';
 import { Product } from '../types/Product';
-import { ServiceResponseSuccess } from '../types/ServiceResponse';
+import { ServiceResponseFail, ServiceResponseSuccess } from '../types/ServiceResponse';
+import {
+  validateProductRequiredFields,
+  validateInputType,
+  validateMinAmountChars,
+} from './validations/product.validation';
 
-const registerProduct = async (productData: Product): Promise<ServiceResponseSuccess<Product>> => {
+const registerProduct = async (productData: Product)
+: Promise<ServiceResponseSuccess<Product> | ServiceResponseFail> => {
+  const productRequiredFieldsError = validateProductRequiredFields(productData);
+  if (productRequiredFieldsError.statusCode !== 200) return productRequiredFieldsError;
+
+  const inputTypeError = validateInputType(productData);
+  if (inputTypeError.statusCode !== 200) return inputTypeError;
+
+  const minAmountCharsError = validateMinAmountChars(productData);
+  if (minAmountCharsError.statusCode !== 200) return minAmountCharsError;
+  
   const newProduct = await ProductModel.create(productData);
 
   return { statusCode: 201, data: newProduct.dataValues };

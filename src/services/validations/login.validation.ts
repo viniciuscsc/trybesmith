@@ -3,7 +3,7 @@ import UserModel from '../../database/models/user.model';
 import { Login } from '../../types/Login';
 import { ServiceResponseFail } from '../../types/ServiceResponse';
 
-export const validateRequiredFields = (loginData: Login): ServiceResponseFail => {
+export const validateLoginRequiredFields = (loginData: Login): ServiceResponseFail => {
   const { username, password } = loginData;
 
   if (!username || !password) {

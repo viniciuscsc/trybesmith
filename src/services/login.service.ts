@@ -3,7 +3,7 @@ import { ServiceResponseFail, ServiceResponseSuccess } from '../types/ServiceRes
 import { Token } from '../types/Token';
 import jwtUtil from '../utils/jwt.util';
 import {
-  validateRequiredFields,
+  validateLoginRequiredFields,
   validateUsernameAndPassword,
 } from './validations/login.validation';
 
@@ -11,7 +11,7 @@ const login = async (loginData: Login)
 : Promise<ServiceResponseSuccess<Token> | ServiceResponseFail> => {
   const { username } = loginData;
 
-  const requiredFieldsError = validateRequiredFields(loginData);
+  const requiredFieldsError = validateLoginRequiredFields(loginData);
   if (requiredFieldsError.statusCode !== 200) return requiredFieldsError;
 
   const usernameAndPasswordError = await validateUsernameAndPassword(loginData);
