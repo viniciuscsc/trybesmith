@@ -1,8 +1,8 @@
 import UserModel from '../../database/models/user.model';
-import { Order } from '../../types/Order';
+import { NewOrder } from '../../types/Order';
 import { ServiceResponseFail } from '../../types/ServiceResponse';
 
-export const validateOrderRequiredFields = (orderData: Order): ServiceResponseFail => {
+export const validateOrderRequiredFields = (orderData: NewOrder): ServiceResponseFail => {
   const { userId, productIds } = orderData;
 
   if (!userId) return { statusCode: 400, data: { message: '"userId" is required' } };
@@ -12,7 +12,7 @@ export const validateOrderRequiredFields = (orderData: Order): ServiceResponseFa
   return { statusCode: 200, data: { message: '' } };
 };
 
-export const validateOrderInputTypes = (orderData: Order): ServiceResponseFail => {
+export const validateOrderInputTypes = (orderData: NewOrder): ServiceResponseFail => {
   const { userId, productIds } = orderData;
 
   if (typeof userId !== 'number') {
@@ -30,7 +30,7 @@ export const validateOrderInputTypes = (orderData: Order): ServiceResponseFail =
   return { statusCode: 200, data: { message: '' } };
 };
 
-export const validateUserExistence = async (orderData: Order)
+export const validateUserExistence = async (orderData: NewOrder)
 : Promise<ServiceResponseFail> => {
   const { userId } = orderData;
 
