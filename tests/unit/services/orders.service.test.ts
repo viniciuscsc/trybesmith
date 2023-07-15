@@ -89,4 +89,18 @@ describe('Testes Unitários em OrdersService', function () {
     expect(statusCode).to.equal(422);
     expect(data).to.deep.equal({ message: '"productIds" must include only numbers' });
   });
+
+  it('É possível cadastrar um pedido com sucesso', async function () {
+    req.body = orderMock.orderData;
+
+    const { statusCode } = await orderService.registerOrder(req.body);
+
+    expect(statusCode).to.equal(201);
+  });
+
+  it('É possível listar todos os pedidos com sucesso', async function () {
+    const { statusCode } = await orderService.getOrders();
+
+    expect(statusCode).to.equal(200);
+  });
 });
