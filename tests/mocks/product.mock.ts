@@ -49,6 +49,11 @@ const newProduct = ProductModel.build({
   orderId: 1,
 });
 
+const products = [
+ { id: 1, name: 'name1', price: 'price1', orderId: 1 },
+ { id: 2, name: 'name2', price: 'price2', orderId: 2 },
+];
+
 export default {
   productData,
   noName,
@@ -58,4 +63,5 @@ export default {
   priceNumberType,
   priceOneChar,
   newProduct,
+  products,
 };

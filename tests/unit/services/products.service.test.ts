@@ -79,4 +79,16 @@ describe('Testes Unitários em ProductsService', function () {
     expect(statusCode).to.equal(201);
     expect(data).to.deep.equal(productMock.newProduct.dataValues);
   });
+
+  // it('É possível listar os produtos com sucesso', async function () {
+  //   const productsMocked = productMock.products
+  //     .map((product) => product);
+
+  //   sinon.stub(ProductModel, 'findAll').resolves(productsMocked);
+
+  //   const { statusCode, data } = await productService.registerProduct(productMock.productData);
+
+  //   expect(statusCode).to.equal(201);
+  //   expect(data).to.deep.equal(productMock.newProduct.dataValues);
+  // });
 });

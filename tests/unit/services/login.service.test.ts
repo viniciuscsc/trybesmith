@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
+import bcrypt from 'bcryptjs';
 
 import UserModel from '../../../src/database/models/user.model';
 import loginService from '../../../src/services/login.service';
@@ -56,10 +57,13 @@ describe('Testes Unitários em LoginService', function () {
     const validUserMocked = loginMock.validUser;
     
     sinon.stub(UserModel, 'findOne').resolves(validUserMocked);
-    sinon.stub(loginValidation, 'validateUsernameAndPassword').resolves({
-      statusCode: 200,
-      data: { message: '1' },
-    });
+
+    sinon.stub(bcrypt, 'compareSync').resolves(true);
+
+    const result = await loginValidation.validateUsernameAndPassword(loginDataMocked);
+
+    expect(result.statusCode).to.equal(200);
+    expect(result.data).to.deep.equal({ message: '1' });
 
     const { statusCode, data } = await loginService.login(loginDataMocked);
 

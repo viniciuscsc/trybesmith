@@ -1,3 +1,6 @@
+import OrderModel from "../../src/database/models/order.model";
+import { NewOrder } from "../../src/types/Order";
+
 const orderData = {
   userId: 1,
   productIds: [{ id: 1 }, {id: 2}],
@@ -39,6 +42,19 @@ const emptyArray = {
   productIds: [],
 };
 
+const newOrderDB = OrderModel.build({
+	id: 4,
+	userId: 1,
+});
+
+const numberProductIds = [1, 2];
+
+const orders = [
+	{ id: 1, userId: 1, productIds: [2, 1] },
+	{ id: 2, userId: 3, productIds: [4, 3] },
+	{ id: 3, userId: 2, productIds: [5] },
+]
+
 export default {
   orderData,
   noAuthorization,
@@ -49,4 +65,7 @@ export default {
   noProductIds,
   productIdsStringType,
   emptyArray,
+  newOrderDB,
+  numberProductIds,
+  orders,
 };

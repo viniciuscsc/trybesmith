@@ -21,6 +21,7 @@ const registerProduct = async (productData: Product)
   if (minAmountCharsError.statusCode !== 200) return minAmountCharsError;
   
   const newProduct = await ProductModel.create(productData);
+  console.log(newProduct);
 
   return { statusCode: 201, data: newProduct.dataValues };
 };

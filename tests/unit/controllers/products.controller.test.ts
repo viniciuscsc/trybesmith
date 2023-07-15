@@ -54,4 +54,20 @@ describe('Testes Unitários em ProductsController', function () {
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(productMock.newProduct.dataValues);
   });
+
+  it('É possível listar todos os produtos com sucesso', async function () {
+    const productsMocked = productMock.products;
+    
+    const serviceResponse: ServiceResponseSuccess<Product[]> = {
+      statusCode: 200,
+      data: productsMocked,
+    };
+
+    sinon.stub(productService, 'getProducts').resolves(serviceResponse);
+
+    await productController.getProducts(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(productsMocked);
+  });
 });
