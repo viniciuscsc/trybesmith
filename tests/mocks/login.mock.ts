@@ -33,6 +33,8 @@ const validLogin = {
   password: 'password',
 };
 
+const validToken = { token: 'validToken' };
+
 export default {
   noUsername,
   noPassword,
@@ -40,4 +42,5 @@ export default {
   invalidPassword,
   validUser,
   validLogin,
+  validToken,
 };
