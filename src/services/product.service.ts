@@ -1,11 +1,13 @@
 import ProductModel from '../database/models/product.model';
 import { Product } from '../types/Product';
 import { ServiceResponseFail, ServiceResponseSuccess } from '../types/ServiceResponse';
-import {
+import productValidation from './validations/product.validation';
+
+const {
   validateProductRequiredFields,
   validateProductInputType,
   validateMinAmountChars,
-} from './validations/product.validation';
+} = productValidation;
 
 const registerProduct = async (productData: Product)
 : Promise<ServiceResponseSuccess<Product> | ServiceResponseFail> => {

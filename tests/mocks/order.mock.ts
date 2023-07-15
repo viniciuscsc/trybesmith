@@ -1,5 +1,3 @@
-import OrderModel from "../../src/database/models/order.model";
-
 const orderData = {
   userId: 1,
   productIds: [{ id: 1 }, {id: 2}],

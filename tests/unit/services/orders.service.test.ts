@@ -3,11 +3,9 @@ import { NextFunction, Request, Response } from 'express';
 import sinon from 'sinon';
 
 import orderService from '../../../src/services/order.service';
-// import orderController from '../../../src/controllers/order.controller';
 import validateToken from '../../../src/middlewares/token.validation';
 
 import orderMock from '../../mocks/order.mock';
-import OrderModel from '../../../src/database/models/order.model';
 
 describe('Testes Unitários em OrdersService', function () {
   const req = {} as Request;

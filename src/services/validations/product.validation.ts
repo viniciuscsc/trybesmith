@@ -1,7 +1,7 @@
 import { Product } from '../../types/Product';
 import { ServiceResponseFail } from '../../types/ServiceResponse';
 
-export const validateProductRequiredFields = (productData: Product)
+const validateProductRequiredFields = (productData: Product)
 : ServiceResponseFail => {
   const { name, price } = productData;
 
@@ -12,7 +12,7 @@ export const validateProductRequiredFields = (productData: Product)
   return { statusCode: 200, data: { message: '' } };
 };
 
-export const validateProductInputType = (productData: Product)
+const validateProductInputType = (productData: Product)
 : ServiceResponseFail => {
   const { name, price } = productData;
 
@@ -27,7 +27,7 @@ export const validateProductInputType = (productData: Product)
   return { statusCode: 200, data: { message: '' } };
 };
 
-export const validateMinAmountChars = (productData: Product)
+const validateMinAmountChars = (productData: Product)
 : ServiceResponseFail => {
   const { name, price } = productData;
   const minAmountChars = 3;
@@ -47,4 +47,10 @@ export const validateMinAmountChars = (productData: Product)
   }
 
   return { statusCode: 200, data: { message: '' } };
+};
+
+export default {
+  validateProductRequiredFields,
+  validateProductInputType,
+  validateMinAmountChars,
 };
